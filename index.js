@@ -99,3 +99,4 @@ var server = app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {
 });
 
 CONSTANTS[CONSTANTS.ENVIRONMENT].EE_HOST = server.address().address;
+ 
