@@ -24,21 +24,21 @@ module.exports = {
   "ERROR_DOWN": "/errorDown.html",
 
   "dev": {
-    "EE_PORT": 81,
+    "EE_PORT": process.env.PORT || 81,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 19001,
     "SEARCH_SERVICE_HOST": "http://aw-lx0095",
     "SEARCH_SERVICE_PATH": "/providers"
   },
   "dit": {
-    "EE_PORT": 8081,
+    "EE_PORT": process.env.PORT|| 8081,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 8280,
     "SEARCH_SERVICE_HOST": "http://aw-lx0193",
     "SEARCH_SERVICE_PATH": "/provider/v1/providers"
   },
   "mot": {
-    "EE_PORT": 8081,
+    "EE_PORT": process.env.PORT || 80,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 443,
     "SEARCH_SERVICE_HOST": "https://mot-heroku.deltadentalins.com/",
@@ -52,7 +52,7 @@ module.exports = {
     "SEARCH_SERVICE_PATH": "----"
   },
   "prod": {
-    "EE_PORT": 80,
+    "EE_PORT": process.env.PORT|| 80,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 8243,
     "SEARCH_SERVICE_HOST": "https://wso2vip.deltads.ent",
