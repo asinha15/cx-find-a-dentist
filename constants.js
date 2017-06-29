@@ -38,9 +38,9 @@ module.exports = {
     "SEARCH_SERVICE_PATH": "/provider/v1/providers"
   },
   "mot": {
-    "EE_PORT": 80,
+    "EE_PORT": 8081,
     "EE_PORT_SSL": 443,
-    "SEARCH_SERVICE_PORT": 80,
+    "SEARCH_SERVICE_PORT": 443,
     "SEARCH_SERVICE_HOST": "https://mot-heroku.deltadentalins.com/",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers"
   },
