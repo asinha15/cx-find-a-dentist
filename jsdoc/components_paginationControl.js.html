@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/paginationControl.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/paginationControl.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+* A static utility class
+* @class PaginationControl
+* @example var mapData = PaginationControl.render(current, total);
+*/
+module.exports = PaginationControl = {
+  /**
+  * @method render returns formatted array for atomicPower to use for pagination control
+  * @param baseURI {string} base uri for all links
+  * @param c {number} current page 0 based
+  * @param total {number} total number of pages
+  * @param prevLabel {string} previous label
+  * @param nextLabel {string} next label
+  * @param pageAPI {string} property name for pagination API
+  * @memberof PaginationControl
+  * @returns {array} web standards query string
+  * @example PaginationControl.render("www.google.com", 0, 1000, "Prev", "Next", "page")
+  */
+  render: function(baseURI, c, total, prevLabel, nextLabel, pageAPI) {
+    var vm = [ { "text":  c+1, "url": baseURI, "active": true } ];
+
+    if (c+2 &lt; total) {
+      baseURI = baseURI.split("&amp;" + pageAPI + "=")[0];
+      vm.push({ "text":  String(c+2), "url": baseURI + "&amp;" + pageAPI + "=" + Number(c+1), "active": false });
+    }
+
+    if (c+4 === total) {
+      baseURI = baseURI.split("&amp;" + pageAPI + "=")[0];
+      vm.push({ "text":  String(c+3), "url": baseURI + "&amp;" + pageAPI + "=" + Number(c+2), "active": false });
+      vm.push({ "text":  String(total), "url": baseURI + "&amp;" + pageAPI + "=" + Number(total-1), "active": false });
+      vm.push({ "text":  nextLabel, "url": baseURI + "&amp;" + pageAPI + "=" + Number(c+1), "active": false, "previous": false, "next": true });
+      vm.unshift({ "text":  "...", "url": "", "active": false });
+      vm.unshift({ "text":  "1", "url": baseURI + "&amp;" + pageAPI +"=0", "active": false });
+      vm.unshift({ "text":  prevLabel, "url": baseURI + "&amp;" + pageAPI + "=" + Number(c-1), "active": false, "previous": true, "next": false });
+      return vm;
+    }
+
+    if (c+3 === total) {
+      baseURI = baseURI.split("&amp;" + pageAPI + "=")[0];
+      vm.push({ "text":  String(c+3), "url": baseURI + "&amp;" + pageAPI + "=" + Number(c+2), "active": false });
+      vm.push({ "text":  nextLabel, "url": baseURI + "&amp;" + pageAPI + "=" + Number(c+1), "active": false, "previous": false, "next": true });
+      vm.unshift({ "text":  String(c), "url": baseURI + "&amp;" + pageAPI + "=" + Number(c-1), "active": false });
+      vm.unshift({ "text":  "...", "url": "", "active": false });
+      vm.unshift({ "text":  "1", "url": baseURI + "&amp;" + pageAPI +"=0", "active": false });
+      vm.unshift({ "text":  prevLabel, "url": baseURI + "&amp;" + pageAPI + "=" + Number(c-1), "active": false, "previous": true, "next": false });
+      return vm;
+    }
+
+    if (c+2 === total) {
+      baseURI = baseURI.split("&amp;" + pageAPI + "=")[0];
+      vm.push({ "text":  String(c+2), "url": baseURI + "&amp;" + pageAPI + "=" + Number(c+1), "active": false });
+      vm.push({ "text":  nextLabel, "url": baseURI + "&amp;" + pageAPI + "=" + Number(c+1), "active": false, "previous": false, "next": true });
+      vm.unshift({ "text":  String(c), "url": baseURI + "&amp;" + pageAPI + "=" + Number(c-1), "active": false });
+      vm.unshift({ "text":  "...", "url": "", "active": false });
+      vm.unshift({ "text":  "1", "url": baseURI + "&amp;" + pageAPI +"=0", "active": false });
+      vm.unshift({ "text":  prevLabel, "url": baseURI + "&amp;" + pageAPI + "=" + Number(c-1), "active": false, "previous": true, "next": false });
+      return vm;
+    }
+
+    if (c+1 === total) {
+      baseURI = baseURI.split("&amp;" + pageAPI + "=")[0];
+      vm.unshift({ "text":  String(c), "url": baseURI + "&amp;" + pageAPI + "=" + Number(c-1), "active": false });
+      vm.unshift({ "text":  "...", "url": "", "active": false });
+      vm.unshift({ "text":  "1", "url": baseURI + "&amp;" + pageAPI +"=0", "active": false });
+      vm.unshift({ "text":  prevLabel, "url": baseURI + "&amp;" + pageAPI + "=" + Number(c-1), "active": false, "previous": true, "next": false });
+      return vm;
+    }
+
+    if (c+3 &lt; total) {
+      baseURI = baseURI.split("&amp;" + pageAPI + "=")[0];
+      vm.push({ "text":  String(c+3), "url": baseURI + "&amp;" + pageAPI + "=" + Number(c+2), "active": false });
+      vm.push({ "text":  "...", "url": "", "active": false });
+      vm.push({ "text":  String(total), "url": baseURI + "&amp;" + pageAPI + "=" + Number(total-1), "active": false });
+    }
+
+    if (c+1 &lt; total) {
+      baseURI = baseURI.split("&amp;" + pageAPI + "=")[0];
+      vm.push({ "text":  nextLabel, "url": baseURI + "&amp;" + pageAPI + "=" + Number(c+1), "active": false, "previous": false, "next": true });
+    }
+
+    if (c === 2) {
+      baseURI = baseURI.split("&amp;" + pageAPI + "=")[0];
+      vm.unshift({ "text":  String(c), "url": baseURI + "&amp;" + pageAPI + "=" + Number(c-1), "active": false });
+      vm.unshift({ "text":  "1", "url": baseURI + "&amp;" + pageAPI +"=0", "active": false });
+      vm.unshift({ "text":  prevLabel, "url": baseURI + "&amp;" + pageAPI + "=" + Number(c-1), "active": false, "previous": true, "next": false });
+      return vm;
+    }
+
+    if (c > 1) {
+      baseURI = baseURI.split("&amp;" + pageAPI + "=")[0];
+      vm.unshift({ "text":  String(c), "url": baseURI + "&amp;" + pageAPI + "=" + Number(c-1), "active": false });
+      vm.unshift({ "text":  "...", "url": "", "active": false });
+    }
+
+    if (c > 0) {
+      baseURI = baseURI.split("&amp;" + pageAPI + "=")[0];
+      vm.unshift({ "text":  "1", "url": baseURI + "&amp;" + pageAPI +"=0", "active": false });
+      vm.unshift({ "text":  prevLabel, "url": baseURI + "&amp;" + pageAPI + "=" + Number(c-1), "active": false, "previous": true, "next": false });
+    }
+
+    return vm;
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Collection.html">Collection</a></li><li><a href="HandlebarsPresenter.html">HandlebarsPresenter</a></li><li><a href="MainPresenter.html">MainPresenter</a></li><li><a href="Model.html">Model</a></li><li><a href="PaginatedCollection.html">PaginatedCollection</a></li><li><a href="PaginationControl.html">PaginationControl</a></li><li><a href="Presenter.html">Presenter</a></li><li><a href="SolrCollection.html">SolrCollection</a></li><li><a href="Utils.html">Utils</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Thu Jun 22 2017 14:15:23 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

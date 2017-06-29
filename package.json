@@ -1,0 +1,30 @@
+{
+  "name": "directory-search-service",
+  "version": "0.9.0",
+  "description": "Provider Directory Application Service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jasmine-node ./test --verbose",
+    "build": "browserify ",
+    "docs": "jsdoc ./views ./utility ./collections ./models ./components -r -d ./jsdoc/ -R ./README.md"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "Bob Warren <rwarren@delta.org> (http://www.delta.com)",
+  "license": "none",
+  "dependencies": {
+    "body-parser": "*",
+    "express": "^4.14.0",
+    "express-handlebars": "*",
+    "filelogger": "^1.0.3",
+    "handlebars": "^4.0.0",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "jasmine-node": "^2.0.0",
+    "jsdoc": "*"
+  }
+}
