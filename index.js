@@ -80,7 +80,7 @@ app.get(CONSTANTS.ERROR_DOWN, errorHelpers.errorDown);
 app.get("/", testHelpers.getAbout);
 app.get("/about", testHelpers.getAbout);
 
-/* try {
+try {
   if (privatekey && cert) {
     CONSTANTS.SSL_ENABLED = true;
 
@@ -92,7 +92,7 @@ app.get("/about", testHelpers.getAbout);
 } catch (e) {
   Logger.warn("Could not read certs for https! " + e);
   CONSTANTS.SSL_ENABLED = false;
-} */
+}
 
 var server = app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {
   Logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT);

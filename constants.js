@@ -39,9 +39,9 @@ module.exports = {
   },
   "mot": {
     "EE_PORT": process.env.PORT || 80,
-    "EE_PORT_SSL": 443,
-    "SEARCH_SERVICE_PORT": 8443,
-    "SEARCH_SERVICE_HOST": "https://mot-heroku.deltadentalins.com",
+    "EE_PORT_SSL": 443 ,
+    "SEARCH_SERVICE_PORT": 8080,
+    "SEARCH_SERVICE_HOST": "http://mot-heroku.deltadentalins.com",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers"
   },
   "pit": {
