@@ -52,7 +52,7 @@ module.exports = {
     "SEARCH_SERVICE_PATH": "----"
   },
   "prod": {
-    "EE_PORT": process.env.PORT|| 80,
+    "EE_PORT": process.env.PORT || 80,
     "EE_PORT_SSL": process.env.PORT || 443,
     "SEARCH_SERVICE_PORT": 8243,
     "SEARCH_SERVICE_HOST": "https://wso2vip.deltads.ent",
