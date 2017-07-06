@@ -1,7 +1,7 @@
 module.exports = {
   "ENVIRONMENT": "mot",
   "SSL_ENABLED": false,
-  "EE_ABOUT": "This is the Directory Experience EndPoint.",
+  "EE_ABOUT": "This is the CX Directory Experience EndPoint.",
 
   "SERVER_LOG_PATH": "/var/log/provider-directory.log",
 
