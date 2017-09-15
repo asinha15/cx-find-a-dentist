@@ -102,10 +102,10 @@ module.exports = {
     SEARCH_SERVICE_LAST_UPDATED: "unknown"
   },
   "mot": {
-    "EE_PORT": 80,
+    "EE_PORT": process.env.PORT || 8010,
     "EE_PORT_SSL": 443,
-    "SEARCH_SERVICE_PORT": 8243,
-    "SEARCH_SERVICE_HOST": "https://mot-wso2vip.ut.dentegra.lab",
+    "SEARCH_SERVICE_PORT": 8080,
+    "SEARCH_SERVICE_HOST": "http://mot-heroku.deltadentalins.com",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://mot.deltadentalins.com",
@@ -119,18 +119,6 @@ module.exports = {
         "APIKEY": null,
         "CLIENTID": "gme-deltadentalofcalifornia"
       }
-    },
-    "APPD": {
-      "controllerHostName" : "rc-lx1281.ut.dentegra.lab",
-      "controllerPort" : 9090,
-      "controllerSslEnabled" : false,
-      "accountName" : "MOT",
-      "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
-      "applicationName" : "Customer_Experience",
-      "tierName" : "CX-Node",
-      "nodeName": "cx-pde-node",
-      "tmpDir": "AppD/logs",
-      "debug": false
     },
     SEARCH_SERVICE_LAST_UPDATED: "unknown"
   },
